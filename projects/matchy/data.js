@@ -65,8 +65,26 @@ var animals = [];
 animals.push(animal);
 
 //create duck variable
+let duck = {
+  species: 'duck',
+  name: 'Jerome',
+  noises: ['quack', 'honk', 'sneeze', 'woosh']
+}
+animals.push(duck);
+console.log(animals)
 
+let dog1 = {
+  species: 'dog',
+  name: 'Tommy',
+  noises: ['bork', 'grumble', 'chomp']
+}
 
+let dog2 = {
+  species: 'dog',
+  name: 'Hil',
+  noises: ['whine', 'grumble', 'ruff']
+}
+animals.push(dog1, dog2);
 
 //////////////////////////////////////////////////////////////////////
 // Step 7 - Making Friends ///////////////////////////////////////////
