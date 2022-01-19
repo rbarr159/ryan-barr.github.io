@@ -305,9 +305,10 @@ _.reject = function (array, func) {
 *   }); -> [[2,4],[1,3,5]]
 }
 */
+
+_.partition = function(array, func) {
 var arrayTruthy = [];
 var arrayFalsy = [];
-_.partition = function(array, func) {
     for (var i = 0; i < array.length; i++) {
         if (func(array[i], i, array)) {
             arrayTruthy.push(array[i])
