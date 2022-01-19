@@ -150,26 +150,47 @@ for (var key in object) {
 //////////////////////////////////////////////////////////////////////
 // Function 13 - Non-Friends /////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
-
+// Should take a name and a list of people, and return a list of all 
+// the names that <name> is not friends with"
 function nonFriends(name, array) {
-    for (i = 0; i < array.length; i++) {
-        
+    let others = [];
+    let ret = [];
+    for (let i = 0; i < array.length; i++) {
+        if (name !== array[i].name) {
+            others.push(array[i].name)
+        } else {
+            var user = array[i];
+        }
     }
+    for (let i = 0; i < others.length; i++) {
+        if (!user.friends.includes(others[i])) {
+            ret.push(others[i]);
+        }
+    } return ret;
+}
 
 
 //////////////////////////////////////////////////////////////////////
 // Function 14 - Update Object ///////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function updateObject(object, key, value) {
+//Should take an object, a key and a value. Should update the property <key> on <object> with new <value>. If <key> does not exist on <object> create it."
 
+function updateObject(object, key, value) {
+    object[key] = value;
+    return object;
 }
 
 //////////////////////////////////////////////////////////////////////
 // Function 15 - Remove Properties ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function removeProperties(object, array) {
+// Should take an object and an array of strings. Should remove any properties on <object> that are listed in <array>
+
+function removeProperties(object, array) { 
+    for (let i = 0; i < array.length; i++) {
+        delete object[array[i]];
+    } return object;
 
 }
 
@@ -177,9 +198,17 @@ function removeProperties(object, array) {
 // Function 16 - Dedup ///////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
-function dedup(array) {
+// Should take an array and return an array with all the duplicates removed
 
-}
+function dedup(array) {
+    let output = [];
+    for (i = 0; i < array.length; i++) {
+      if (!output.includes(array[i])) {
+        output.push(array[i]);
+      }
+    } return output;
+  }
+  
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
