@@ -72,6 +72,8 @@ function capitalizeAllWords(string) {
 //////////////////////////////////////////////////////////////////////
 
 function welcomeMessage(object) {
+    let name = object.name.charAt(0).toUpperCase() + object.name.slice(1);
+    return `Welcome ${name}!`
     
     
 }
@@ -150,17 +152,10 @@ for (var key in object) {
 //////////////////////////////////////////////////////////////////////
 
 function nonFriends(name, array) {
-    var allFriends = [];
     for (i = 0; i < array.length; i++) {
-        for (var key in array[i]) {
-            if (array[i]['name'] === name) {
-                var friendsArr = array[i]['friends']
-            }
-        }
-    allFriends.push(array[i]['name']);
+        
     }
-for (var i = 0; i)
-}
+
 
 //////////////////////////////////////////////////////////////////////
 // Function 14 - Update Object ///////////////////////////////////////

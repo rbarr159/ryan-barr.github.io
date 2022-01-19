@@ -120,9 +120,66 @@ let testObj = {
 
 
 // 6. Function //
-// functions are responsible for a lot of the "heavy lifting" in javascript
+// functions are responsible for a lot of "heavy lifting" in javascript
 // functions allow programmers to condense repetitive code blocks into a high-level, more abstract process that will run certain code based on input parameters
-// to declare a function, use the keyword 'function', followed 
+// the main components of a funciton are the name, parameters, function body, and return statement
+// note that a function does not need to have parameters or returns
+
+//Ex. - a funciton w/ parameters & returns:
+
+function addFive(n) { // funciton name = addFive, parameter = n
+    return n + 5;     // this function will return a value equal to the input n plus 5
+}                     // everything within the curly braces are referred to as the function body
+var tenPlusFive = addFive(10);
+console.log(tenPlusFive) // this will return 15
+
+//Ex. - a funciton w/o parameters & returns:
+
+function sayHi() {
+    console.log('hello world!')
+}
+
+sayHi(); //invoking or calling this funciton will print 'hello world!' to the console
+
+// to declare a function, use the keyword 'function', followed by the function definition, as below:
+function testPrint(z){ // in this example, z is a parameter of the funciton--which represents an argument to be passed in when the funciton is called
+    console.log(z)
+} 
+// functions can also be written as function expressions--which is a function that is part of a larger expression, like being assigned to a variable
+// for example,
+var testFunc = function(x) {
+    console.log(x);
+}
+/*
+    a KEY DIFFERENCE between function expressions and function declarations comes in HOISTING
+    a function DECLARATION, much like a declared variable, is hoisted, allowing the functionto be called in a program before the line in which it is declared
+    a function EXPRESSION will NOT be hoisted--only the associated variable will be hoisted.
+*/
+
+// functions are considered "first-class" objects - as they can be used in place of any data type.
+
+// a function can be stored in a variable (as in the expression example above), or in an object or array, shown below
+
+    let arrFn = [0, 'string', function() {console.log('hip hip array')}]
+
+// accessing the value arrFn[2] allows us to call the funciton
+
+arrFn[2](); // prints 'hip hip array'
+
+// a funciton can also be passed in as an argument to another funciton, shown here:
+function arrayTest(arr, fn) {
+    let output = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (fn(arr[i])) {                       // The arrayTest fn will take in an array and a function, and will call the input funciton for each element of the array
+            output.push(arr[i])                 // if calling the function on an array element resolves to true, that element will be pushed into an output array
+        }
+    }
+    return output;                                     
+}
+let array = [0, 1, 2, 0, -4, 9];
+console.log(arrayTest(array, function(num) {
+  return num > 0;
+}))
 
 
 // 7. undefined //
@@ -144,15 +201,21 @@ if (undVar) {
 // 8. null //
 // null is a value that represents the absence of an object value
 
+// when put into the typeof operator, typeof null returns object
+console.log(typeof null); //returns 'object'
+
+// with the loose euqality operator, 
+console.log(null == undefined ); // returns true
+
+// but with strict equality
+console.log(null === undefined ); // returns false
 
 
 // null resolves to falsy in Boolean context
-
 if (undVar) {
     console.log(nullVar)
 } else {
      console.log(nullVar)   // falsy will print to the console because null is a falsy value, so the "if" statement is skipped
-
 }              
 
 // 9. NaN //
@@ -160,8 +223,7 @@ if (undVar) {
 
 // There are five types of operations that will return NaN:
 
-// 1 - if a number can not be parsed 
-// ??????????????????????????????????
+// 1 - if a number can not be parsed
 // 2 - if a mathematic operation returns a nonreal/complex number 
 console.log(Math.sqrt(-1));
 // 3 - if an operand in a mathematical operation is NaN
@@ -172,11 +234,69 @@ console.log(0 / 0);
 console.log('test' * 5);
 
 
-// 10. Infinity //
-// Infinity is a global property that resolves to a numeric value that is greater than all numbers
-// it is also equal to the property Number.POSITIVE_INFINITY
+// 10. Infinity and -Infinity//
+
+// Infinity is a global property that resolves to a numeric value that is GREATER than all numbers, that is:
+// Infinity > x for all x EXCEPT x = Infinity
+// Negative Infinity is a global property that resolves to a numeric value that is LESS than all numbers, that is:
+// x > -Infinity for all x EXCEPT x = -Infinity
+
+// some mathematical properties of positive infinity:
+
+console.log(10 * Infinity) // = Infinity --- any positive value * infinity = infinity
+console.log(-3 * Infinity) // = negative infinity --- any negative value * Infinity = negative infinity
+console.log(3 / Infinity) // = +0 any number / positive infinity is positive signed zero
+console.log(-3 / Infinity) // = -0 any number / positive infinity is negative signed zero (signed zero important for rounding and one-sided limits)
+console.log(NaN * Infinity) // = NaN
+
+// These properties are the same for - Infinity, with all real number values multiplied by (-1) (aka signs switched)
+
+// Infinity is also equal to the property Number.POSITIVE_INFINITY, and -Infinity is equal to Number.NEGATIVE_INFINITY
 
 
-// 11. Simple v Complex Data Types //
+
+// 11. Simple/Primitive v Complex Data Types //
+
+// in js, complex data types can contain other data types
+
+let complexAr = ['string', 45, null, undefined, Infinity, [2, 3, 4, 5], {key1: 'val1'}, function() {console.log('I\'m complex')}]
+let compObj = {
+    array: complexAr,
+    nestedObj: {how: 'did I get here'}
+}
+// conversely, simple data types cannot contain other data types, simple or complex-- they represent only a single value
+
+//strings, numbers, boolean, undefined, null all represent single data points
 
 // 12. Copy v Reference values //
+// in js, assigned or initialized variables can be thought of as pointing to a value to which they resolve
+let a = 20; // from here forward, a will resolve to the numerical value 20
+let b = 'more peas' // the same is the case for this--b will resolve to the string 'more peas'
+let c = a; // here, c points to a, which, as mentioned, resolves to 20--c therefore also resolves to 20
+// the example in the line above assigns the value in a very specific way--that is, the value of a is read and that value is COPIED to c
+// in essence, a and c are not pointing to the "same" number 20--they each have their own 20. This can be illustrated by altering one of the two variables
+
+c += 5;
+console.log(c) // this will print 25
+console.log(a) // this will print 20
+
+// because c had its 'own copy' of the value, we can alter the c number without changing the value of a
+// this is the case for all simple data types in js
+
+// by contrast, complex data (objects and arrays) point to a specific index or address in memory, rather than pointing directly to a value
+let values = [1, 5, 3, 8, 7, 6, 0]; // creating an array or object points our variable to a reference address where the array values exist
+let newArr = values;        // because values points to an address where the data exists, this expression will point newArr to the address, not the values stored there
+
+// this is significant because newArr does NOT have its 'own copy' of the data like our simple example did--so any changes to newArr will also be changes to the array that 
+// the values variable points to--they're the SAME ARRAY!
+// for example,
+newArr.push('smol puppy')
+console.log(values) // this prints  [1, 5, 3, 8, 7, 6, 0, 'smol puppy'] because there is only one array--no copies.
+
+// if we re-assign the newArr variable, however, it will not change what our values variable resolves to, as we will be pointing newArr to a new address
+
+newArr = [4, 3, 2, 1, 'blast off'];
+console.log(values);
+
+
+
