@@ -160,7 +160,7 @@ var testFunc = function(x) {
 
 // a function can be stored in a variable (as in the expression example above), or in an object or array, shown below
 
-    let arrFn = [0, 'string', function() {console.log('hip hip array')}]
+    let arrFn = [0, 'strng', function() {console.log('hip hip array')}]
 
 // accessing the value arrFn[2] allows us to call the funciton
 

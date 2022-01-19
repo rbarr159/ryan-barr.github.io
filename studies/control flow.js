@@ -1,5 +1,5 @@
 /**
- *CONTROL FLOW
+ * CONTROL FLOW
  * 0. Control flow is the order in which a computer executes statements in a script. 
  * By default, code runs in order from the first line down.
  * There are a number of ways to alter the control flow such that certain parts of code are skipped over or repeated.
@@ -24,7 +24,7 @@ if (conditional statement that will resolve to boolean) {
 var a = 5;
 var b = 10;
 if (a * b > 45) {           // in this case, a * b = 5 * 10 = 50, so the statement resolves to true 
-    console.log('That\'s a spicy meatball') // because the conditional resoolved to true, this code is run and the message prints
+    console.log('That\'s a spicy meatball!') // because the conditional resolved to true, this code is run and the message prints
 }
 
 // 2. ELSE IF

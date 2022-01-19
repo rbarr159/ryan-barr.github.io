@@ -22,7 +22,7 @@ console.log(testVar); // this will print undefined
 
 // 2. Assignment and Initialization //
 // Assignment is the process of pointing an existing variable to a piece of data, like below
-testVar = 74;
+testVar = 73;
 testVarTwo = 'kerfuffle'
 // These variables can also be reassigned to new values, like so (this is not the case for variables initialized with const)
 testVar = 88;

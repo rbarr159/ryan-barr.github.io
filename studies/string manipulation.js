@@ -17,7 +17,7 @@
 
   //we can also concatenate strings with the addition assignment operator, shown below:
   let str = 'abcde';
-  console.log(str += 'fghi') // this will print 'abcdefghi'
+  console.log(str += 'fgh') // this will print 'abcdefgh'
 
   // 2. String Methods
   // there also exist a number of useful string methods:

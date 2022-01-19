@@ -16,11 +16,11 @@
 // 1. to utilize a function, much like a variable, the funciton must first be declared.
 
 function sayHello() {
-    console.log('wuzzam???')            // this function now exists as a variable in the global context
+    console.log('wuzzam??')            // this function now exists as a variable in the global context
 }
 
 // now to use the function, we must call or invoke the function, by typeing the funciton name followed by ();
-sayHello(); // this will cause the code in the function body to be executed, so 'wuzzam???' will print to the console
+sayHello(); // this will cause the code in the function body to be executed, so 'wuzzam??' will print to the console
 
 
 // 2. Now let's look at a more complex example--below is a function with that takes in an input value, called a parameter

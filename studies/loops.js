@@ -14,7 +14,7 @@
  // for example:
  let n = 1;
  while (n <= 10) {                              // here we set our condition-- as long as n is less than or equal to 10, the program wil execute the following code block
-     console.log(`this is iteration # ${n}`)    // this should print to the console for every iteration--i.e. this is iteration 1, this is iteration 2, ... until our condition is false
+     console.log(`this is iteration # ${n} !`)    // this should print to the console for every iteration--i.e. this is iteration 1, this is iteration 2, ... until our condition is false
      n++;                                       // this is an important step-incrementing n by 1 at the end of every iteration means we will eventually reach a point where n <= 10 resolves to false and the loop will end
  }
  

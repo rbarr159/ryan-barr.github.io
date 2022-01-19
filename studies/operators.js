@@ -119,7 +119,7 @@ console.log(--sum);// will print 13
  // the typeof operator will return a string representing the data type of the operand:
  console.log(typeof 7); // will print 'number'
  
- console.log(typeof 'test'); // will print 'string
+ console.log(typeof 'tst'); // will print 'string
  
  console.log(typeof true); // will print 'boolean'
  
