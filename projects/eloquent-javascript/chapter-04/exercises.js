@@ -2,23 +2,29 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-const { reverse } = require("../../recursion-practice/src/recursion");
+// const { reverse } = require("../../recursion-practice/src/recursion");
 
-function range(start, end, step) {
+function range(start, end, step=1) {
   let arr = [];
-  for (var i = start; i <= end; i + step) {
-    arr.push(i);
-
+  if (step < 0 || start === end) {
+    return arr;
   }
-
+  for (var i = start; i <= end; i += step) {
+    arr.push(i);
+  }
+return arr;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 // sum /////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function sum() {
-
+function sum(array) {
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i]
+  }
+  return sum;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -38,13 +44,13 @@ function reverseArray(array) {
 ////////////////////////////////////////////////////////////////////////////////
 
 function reverseArrayInPlace(array) {
-  //determine odd or even
-  if (array.length % 2 === 0) {
-
-  } else {
-
+  let ogLength = array.length;
+  for (let i = ogLength - 1; i >= 0; i--) {
+    array.push(array[i])
   }
-
+  for (let i = 0; i < ogLength; i++) {
+    array.shift();
+  } return array;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -54,7 +60,7 @@ function reverseArrayInPlace(array) {
 function arrayToList(array) {
   var rest = null;
   for (var i = array.length - 1; i >= 0; i--) {
-    rest = {value: arr[i], rest }
+    rest = {value: array[i], rest }
   } return rest;
 }
 
@@ -62,7 +68,12 @@ function arrayToList(array) {
 // listToArray /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function listToArray() {
+function listToArray(list, arr=[]) {
+  arr.push(list.value);
+  if (list.rest === null) {
+    return arr;
+  }
+  return listToArray(list.rest, arr)
 
 }
 
@@ -70,8 +81,11 @@ function listToArray() {
 // prepend /////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function prepend() {
-
+function prepend(x, list) {
+  list = {
+    value: x,
+    rest: list
+  }; return list;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -79,6 +93,9 @@ function prepend() {
 ////////////////////////////////////////////////////////////////////////////////
 
 function nth(list, n) {
+  if (n < 0) {
+    return;
+  }
   if (n === 0) {
     return list.value;
   }
@@ -90,9 +107,38 @@ function nth(list, n) {
 // deepEqual ///////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function deepEqual() {
+function deepEqual(x, y) {
 
+  if (typeof x !== typeof y) {
+    return false;
+  } else if (typeof x !== 'object' || typeof y !== 'object') {
+    return (x === y);
+  } else {
+    let xKeys = Object.keys(x);
+    let yKeys = Object.keys(y);
+    if (xKeys.length !== yKeys.length) {
+      return false;
+    }
+    for (let i = 0; i < xKeys.length; i++) {
+      if (typeof x[xKeys[i]] !== 'object') {
+        if (x[xKeys[i]] !== y[xKeys[i]]) {
+          return false;
+        }
+      } else if (Array.isArray(x[xKeys[i]])) {
+        let xArr = x[xKeys[i]];
+        let yArr = y[xKeys[i]];
+        for (let j = 0; j < xArr.length; j++) {
+          if (xArr[j] !== yArr[j]) {
+            return false;
+          }
+        }
+      } else if (typeof x[xKeys[i]] === 'object') {
+        return deepEqual(x[xKeys[i]], y[xKeys[i]])
+      }
+    }
+  } return true;
 }
+
 
 ////////////////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE //////////////////////////////////////////////////////
